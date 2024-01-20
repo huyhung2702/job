@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Gioithieuvieclam.Models.NguoiDung>
+@{
+    ViewBag.Title = "QLNhaTuyenDung";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@{
+    var danhSachSinhVien = ViewBag.DanhSachSinhVien as List<Gioithieuvieclam.Models.NguoiDung>;
+    var danhSachNhaTuyenDung = ViewBag.DanhSachNhaTuyenDung as List<Gioithieuvieclam.Models.NguoiDung>;
+}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<div class="container mt-4">
+    <h2>Danh sách Tài khoản Nhà tuyển dụng</h2>
+    <p>
+        @Html.ActionLink("Thêm tài khoản", "Create")
+    </p>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Email</th>
+                <th>Password</th>
+                <th>RoleID</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var nhaTuyenDung in danhSachNhaTuyenDung)
+            {
+                <tr>
+                    <td>@nhaTuyenDung.Email</td>
+                    <td>@nhaTuyenDung.Password</td>
+                    <td>@nhaTuyenDung.RoleID</td>
+                    <td>
+                        @Html.ActionLink("Chỉnh sửa", "Edit", new { id = nhaTuyenDung.UserID }) |
+
+                        @Html.ActionLink("Xóa", "Delete", new { id = nhaTuyenDung.UserID }) |
+
+                        @Html.ActionLink("Thông tin Nhà tuyển dụng", "Delete", new { id = nhaTuyenDung.UserID })
+                    </td>
+                </tr>
+
+            }
+        </tbody>
+
+    </table>
+
+</div>

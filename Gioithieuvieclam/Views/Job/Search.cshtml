@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Gioithieuvieclam.Models.CongViec>
+@{
+    ViewBag.Title = "Search";
+}
+<link href="~/Content/search.css" rel="stylesheet" type="text/css" media="all" />
+<div class="search-bar">
+    <!-- Dropdown start -->
+    <div class="dropdown">
+        <div id="drop-text" class="dropdown-text">
+            <span id="span">Chọn ngành</span>
+            <i id="icon" class="fa-solid fa-chevron-down"></i>
+        </div>
+        <ul id="list" class="dropdown-list">
+            <li class="dropdown-list-item">Công nghệ thông tin</li>
+            <li class="dropdown-list-item">Kinh tế tài chính</li>
+
+        </ul>
+    </div>
+    <!-- Dropdown ends -->
+    <!-- Search box input start -->
+    <div class="search-box">
+        <input type="text" id="search-input" placeholder="Tìm kiếm việc làm..." />
+        <i class="fa-solid fa-magnifying-glass"></i>
+    </div>
+    <!-- Search box input ends -->
+
+</div>
+<script src="~/img/script.js"></script>
+<div class="job-list">
+
+    @foreach (var jobPost in Model)
+    {
+        <div class="job-post">
+            <div class="job-details">
+                <p class="job-description"><strong>Mô tả công việc:</strong> @jobPost.MoTaCongViec</p>
+                <p><strong>Yêu cầu:</strong> @jobPost.YeuCau</p>
+                <p><strong>Vị trí:</strong> @jobPost.ViTri</p>
+                <p><strong>Mức lương:</strong> @jobPost.MucLuong</p>
+                <p><strong>Thông tin liên hệ:</strong> @jobPost.ThongTinLienHe</p>
+                <button class="apply-button">Nộp hồ sơ ứng tuyển</button>
+            </div>
+        </div>
+    }
+

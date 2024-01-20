@@ -1,0 +1,72 @@
+﻿@model Gioithieuvieclam.Models.CongViec
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Xóa bài đăng</h2>
+
+<h3>Bạn có muốn xóa bài đăng này?</h3>
+<div>
+    <h4>CongViec</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NhaTuyenDungID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NhaTuyenDungID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MoTaCongViec)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MoTaCongViec)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.YeuCau)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.YeuCau)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ViTri)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ViTri)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MucLuong)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MucLuong)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ThongTinLienHe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ThongTinLienHe)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

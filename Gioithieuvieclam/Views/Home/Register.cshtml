@@ -1,0 +1,108 @@
+﻿@model Gioithieuvieclam.Models.NguoiDung
+
+@{
+    ViewBag.Title = "Register";
+}
+
+<h2>Đăng kí</h2>
+<style>
+    body {
+        background-color: #f5f5f5;
+        font-family: 'Arial', sans-serif;
+    }
+
+    h2 {
+        color: #333;
+    }
+
+    .form-horizontal {
+        max-width: 500px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 20px;
+        margin-top: 50px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    label {
+        color: #555;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    .btn {
+        background-color: #4CAF50;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+        .btn:hover {
+            background-color: #45a049;
+        }
+
+    a {
+        color: #007bff;
+        text-decoration: none;
+    }
+
+        a:hover {
+            text-decoration: underline;
+        }
+</style>
+@using (Html.BeginForm("Register", "Home", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Đăng kí tài khoản</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.PasswordFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <p>Quyền</p>
+            @Html.DropDownList("RoleID")
+                
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Đăng kí" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Trở về đăng nhập", "Index")
+</div>

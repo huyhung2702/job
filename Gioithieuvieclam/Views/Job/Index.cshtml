@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Gioithieuvieclam.Models.CongViec>
+
+@{
+    ViewBag.Title = "Index";
+}
+<link href="~/Content/Jobpost.css" rel="stylesheet" type="text/css" media="all" />
+
+<h2>Danh sách bài đăng tuyển dụng</h2>
+
+<p>
+    @Html.ActionLink("Thêm bài đăng mới", "Create")
+</p>
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.MoTaCongViec)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.YeuCau)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ViTri)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MucLuong)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ThongTinLienHe)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.MoTaCongViec)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.YeuCau)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ViTri)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MucLuong)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ThongTinLienHe)
+            </td>
+            <td>
+                @Html.ActionLink("Sửa bài đăng", "Edit", new { id = item.ID })|
+                @Html.ActionLink("Xóa bài đăng", "Delete", new { id = item.ID })|
+                @Html.ActionLink("Xem ứng viên", "Detail", new { id = item.ID })
+            </td>
+        </tr>
+    }
+    <p>
+        @Html.ActionLink("Về lại trang chủ", "Index","Home")
+    </p>
+
+</table>

@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="jobModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CongViec">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="NhaTuyenDungID" Type="Int32" />
+    <Property Name="MoTaCongViec" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="YeuCau" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="ViTri" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MucLuong" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="ThongTinLienHe" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="NhaTuyenDung" Relationship="Self.FK__CongViec__NhaTuy__3F466844" FromRole="CongViec" ToRole="NhaTuyenDung" />
+    <NavigationProperty Name="UngViens" Relationship="Self.FK__UngVien__CongVie__4316F928" FromRole="CongViec" ToRole="UngVien" />
+  </EntityType>
+  <EntityType Name="HoSoUngTuyen">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="SinhVienID" Type="Int32" />
+    <Property Name="HocVan" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="KinhNghiemLamViec" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="SinhVien" Relationship="Self.FK__HoSoUngTu__SinhV__3A81B327" FromRole="HoSoUngTuyen" ToRole="SinhVien" />
+  </EntityType>
+  <EntityType Name="NguoiDung">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="RoleID" Type="Int32" />
+    <NavigationProperty Name="PhanQuyen" Relationship="Self.FK__NguoiDung__RoleI__49C3F6B7" FromRole="NguoiDung" ToRole="PhanQuyen" />
+  </EntityType>
+  <EntityType Name="NhaTuyenDung">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="TenCongTy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DiaChi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="ThongTinLienHe" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CongViecs" Relationship="Self.FK__CongViec__NhaTuy__3F466844" FromRole="NhaTuyenDung" ToRole="CongViec" />
+  </EntityType>
+  <EntityType Name="PhanQuyen">
+    <Key>
+      <PropertyRef Name="RoleID" />
+    </Key>
+    <Property Name="RoleID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="NguoiDungs" Relationship="Self.FK__NguoiDung__RoleI__49C3F6B7" FromRole="PhanQuyen" ToRole="NguoiDung" />
+  </EntityType>
+  <EntityType Name="SinhVien">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="HoTen" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SoDienThoai" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="SoCCCD" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+    <Property Name="DiaChi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="TrinhDo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ViTri" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MucLuongMongMuon" Type="Decimal" Precision="18" Scale="2" />
+    <NavigationProperty Name="HoSoUngTuyens" Relationship="Self.FK__HoSoUngTu__SinhV__3A81B327" FromRole="SinhVien" ToRole="HoSoUngTuyen" />
+    <NavigationProperty Name="UngViens" Relationship="Self.FK__UngVien__SinhVie__440B1D61" FromRole="SinhVien" ToRole="UngVien" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="UngVien">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="CongViecID" Type="Int32" />
+    <Property Name="SinhVienID" Type="Int32" />
+    <NavigationProperty Name="CongViec" Relationship="Self.FK__UngVien__CongVie__4316F928" FromRole="UngVien" ToRole="CongViec" />
+    <NavigationProperty Name="SinhVien" Relationship="Self.FK__UngVien__SinhVie__440B1D61" FromRole="UngVien" ToRole="SinhVien" />
+  </EntityType>
+  <Association Name="FK__CongViec__NhaTuy__3F466844">
+    <End Role="NhaTuyenDung" Type="Self.NhaTuyenDung" Multiplicity="0..1" />
+    <End Role="CongViec" Type="Self.CongViec" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NhaTuyenDung">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CongViec">
+        <PropertyRef Name="NhaTuyenDungID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UngVien__CongVie__4316F928">
+    <End Role="CongViec" Type="Self.CongViec" Multiplicity="0..1" />
+    <End Role="UngVien" Type="Self.UngVien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CongViec">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UngVien">
+        <PropertyRef Name="CongViecID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HoSoUngTu__SinhV__3A81B327">
+    <End Role="SinhVien" Type="Self.SinhVien" Multiplicity="0..1" />
+    <End Role="HoSoUngTuyen" Type="Self.HoSoUngTuyen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SinhVien">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="HoSoUngTuyen">
+        <PropertyRef Name="SinhVienID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__NguoiDung__RoleI__49C3F6B7">
+    <End Role="PhanQuyen" Type="Self.PhanQuyen" Multiplicity="0..1" />
+    <End Role="NguoiDung" Type="Self.NguoiDung" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PhanQuyen">
+        <PropertyRef Name="RoleID" />
+      </Principal>
+      <Dependent Role="NguoiDung">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UngVien__SinhVie__440B1D61">
+    <End Role="SinhVien" Type="Self.SinhVien" Multiplicity="0..1" />
+    <End Role="UngVien" Type="Self.UngVien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SinhVien">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UngVien">
+        <PropertyRef Name="SinhVienID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="jobEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CongViecs" EntityType="Self.CongViec" />
+    <EntitySet Name="HoSoUngTuyens" EntityType="Self.HoSoUngTuyen" />
+    <EntitySet Name="NguoiDungs" EntityType="Self.NguoiDung" />
+    <EntitySet Name="NhaTuyenDungs" EntityType="Self.NhaTuyenDung" />
+    <EntitySet Name="PhanQuyens" EntityType="Self.PhanQuyen" />
+    <EntitySet Name="SinhViens" EntityType="Self.SinhVien" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="UngViens" EntityType="Self.UngVien" />
+    <AssociationSet Name="FK__CongViec__NhaTuy__3F466844" Association="Self.FK__CongViec__NhaTuy__3F466844">
+      <End Role="NhaTuyenDung" EntitySet="NhaTuyenDungs" />
+      <End Role="CongViec" EntitySet="CongViecs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UngVien__CongVie__4316F928" Association="Self.FK__UngVien__CongVie__4316F928">
+      <End Role="CongViec" EntitySet="CongViecs" />
+      <End Role="UngVien" EntitySet="UngViens" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HoSoUngTu__SinhV__3A81B327" Association="Self.FK__HoSoUngTu__SinhV__3A81B327">
+      <End Role="SinhVien" EntitySet="SinhViens" />
+      <End Role="HoSoUngTuyen" EntitySet="HoSoUngTuyens" />
+    </AssociationSet>
+    <AssociationSet Name="FK__NguoiDung__RoleI__49C3F6B7" Association="Self.FK__NguoiDung__RoleI__49C3F6B7">
+      <End Role="PhanQuyen" EntitySet="PhanQuyens" />
+      <End Role="NguoiDung" EntitySet="NguoiDungs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UngVien__SinhVie__440B1D61" Association="Self.FK__UngVien__SinhVie__440B1D61">
+      <End Role="SinhVien" EntitySet="SinhViens" />
+      <End Role="UngVien" EntitySet="UngViens" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

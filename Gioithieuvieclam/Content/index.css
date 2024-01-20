@@ -1,0 +1,95 @@
+﻿
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins",sans-serif;
+}
+
+
+
+
+
+
+body {
+    height: 100vh;
+    width: 100%;
+    background: url('/img/anh.jpg')no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.header {
+    background: rgba(255,255,255,.1);
+    backdrop-filter: blur(25px);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+    .header a {
+        color: #fff;
+        text-transform: capitalize;
+    }
+
+    .header .logo {
+        text-decoration: none;
+        font-size: 32px;
+        font-weight: 700;
+    }
+
+    .header .navbar a {
+        margin-left: 40px;
+        position: relative;
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: 500;
+    }
+
+.navbar a::before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    height: 2px;
+    background: #fff;
+    width: 00%;
+    transition: .4s;
+}
+
+.navbar a:hover::before {
+    width: 100%;
+}
+
+.search-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 300px;
+}
+
+/* Styles for search button */
+.search-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background: rgba(255,255,255,.1);
+    backdrop-filter: blur(25px);
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-decoration: none; /* Loại bỏ gạch chân chữ */
+    border-radius: 20px; /* Tạo bo viền tròn */
+    
+}
+
+    /* Hover effect for search button */
+    .search-button:hover {
+        background-color: #fff;
+        color: #000; /* Đổi màu chữ thành màu đen khi hover */
+    }
+

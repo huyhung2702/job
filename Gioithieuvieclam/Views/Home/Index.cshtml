@@ -1,0 +1,104 @@
+﻿@model IEnumerable<Gioithieuvieclam.Models.CongViec>
+@{
+    ViewBag.Title = "Home Page";
+
+
+}
+
+
+    <link href="~/Content/index.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Content/search.css" rel="stylesheet" type="text/css" media="all" />
+
+    <main>
+        <header class="header">
+
+            <a href="#" class="logo">SVJob</a>
+            <nav class="navbar">
+
+                @if (Session["UserID"] != null)
+                {
+                    if ((int)Session["RoleID"] == 1)
+                    {
+
+
+
+
+                        <a class="nav-link">@Html.ActionLink("Xem hồ sơ", "Index", "SinhVien")</a>
+                    }
+                    if ((int)Session["RoleID"] == 2)
+                    {
+                        <a class="nav-link">@Html.ActionLink("Danh sách bài đăng", "Index", "Job")</a>
+
+
+                    }
+                    if ((int)Session["RoleID"] == 3)
+                    {
+                        <a class="nav-link">@Html.ActionLink("Quản trị viên", "Index", "Admin","Admin")</a>
+
+
+                    }
+                    <a class="nav_link">@Session["Email"]</a>
+                    <a class="nav_link">@Html.ActionLink("Logout", "Logout", "Home")</a>
+                }
+                else
+                {
+                    <a href="#" class="nav_link">@Html.ActionLink("Đăng nhập", "Login", "Home")</a>
+                }
+
+
+
+            </nav>
+
+
+        </header>
+
+        @*<div class="search-button-container">
+            <button class="search-button">@Html.ActionLink("Tìm kiếm việc làm ngay", "Search", "Job")</button>
+        </div>*@
+
+
+        <div class="search-bar">
+            <!-- Dropdown start -->
+            <div class="dropdown">
+                <div id="drop-text" class="dropdown-text">
+                    <span id="span">Chọn ngành</span>
+                    <i id="icon" class="fa-solid fa-chevron-down"></i>
+                </div>
+                <ul id="list" class="dropdown-list">
+                    <li class="dropdown-list-item">Công nghệ thông tin</li>
+                    <li class="dropdown-list-item">Kinh tế tài chính</li>
+
+                </ul>
+            </div>
+            <!-- Dropdown ends -->
+            <!-- Search box input start -->
+            <div class="search-box">
+                <input type="text" id="search-input" placeholder="Tìm kiếm việc làm..." />
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+            <!-- Search box input ends -->
+
+        </div>
+        <script src="~/img/script.js"></script>
+        <div class="job-list">
+
+            @foreach (var jobPost in Model)
+            {
+                <div class="job-post">
+                    <div class="job-details">
+                        <p class="job-description"><strong>Mô tả công việc:</strong> @jobPost.MoTaCongViec</p>
+                        <p class="job-description"><strong>Yêu cầu:</strong> @jobPost.YeuCau</p>
+                        <p class="job-description"><strong>Vị trí:</strong> @jobPost.ViTri</p>
+                        <p class="job-description"><strong>Mức lương:</strong> @jobPost.MucLuong</p>
+                        <p class="job-description"><strong>Thông tin liên hệ:</strong> @jobPost.ThongTinLienHe</p>
+                        <button  class="apply-button">@Html.ActionLink("Nộp hồ sơ ứng tuyển","Apply", new { jobId = jobPost.ID })</button>
+                    </div>
+                </div>
+            }
+            </div>
+            @*
+            <p>
+                @Html.ActionLink("Đăng bài đăng mới", "Create")
+            </p>*@
+
+    </main>

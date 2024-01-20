@@ -1,0 +1,97 @@
+﻿@model Gioithieuvieclam.Models.SinhVien
+@{
+    ViewBag.Title = "Index";
+}
+<link href="~/Content/viewProfile.css" rel="stylesheet" type="text/css" media="all" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+    .btn-primary {
+        background-color: #ffd800;
+        color: #fff;
+        border: 1px solid #007bff;
+    }
+
+        .btn-primary:hover {
+            background-color: #808080;
+        }
+
+</style>
+<div class="container light-style flex-grow-1 container-p-y">
+    <h4 class="font-weight-bold py-3 mb-4">
+        Cài đặt hồ sơ cá nhân
+    </h4>
+    @Html.ActionLink("Thông báo kết quả tuyển dụng", "ApplyResult", "SinhVien", null, new { @class = "list-group-item list-group-item-action" })
+    <div class="card overflow-hidden">
+        <div class="row no-gutters row-bordered row-border-light">
+            <div class="col-md-3 pt-0">
+                <div class="list-group list-group-flush account-settings-links">
+                    <a class="list-group-item list-group-item-action active" data-toggle="list"
+                       href="#account-general">Hồ sơ cá nhân</a>
+
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="tab-content">
+                    <div class="tab-pane fade active show" id="account-general">
+                        <div class="card-body media align-items-center">
+                            <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt
+                                 class="d-block ui-w-80">
+                            <div class="media-body ml-4">
+                                <label class="btn btn-outline-primary">
+                                    Upload new photo
+                                    <input type="file" class="account-settings-fileinput">
+                                </label> &nbsp;
+                                <button type="button" class="btn btn-default md-btn-flat">Reset</button>
+                                <div class="text-light small mt-1">Allowed JPG, GIF or PNG. Max size of 800K</div>
+                            </div>
+                        </div>
+                        <hr class="border-light m-0">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label class="form-label"><strong>Họ và tên:</strong> @Model.HoTen</label>
+
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label"><strong>Số điện thoại:</strong> @Model.SoDienThoai</label>
+
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label"><strong>Số căn cước công dân:</strong> @Model.SoCCCD</label>
+
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label"><strong>Địa chỉ:</strong> @Model.DiaChi</label>
+
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label"><strong>Trình độ:</strong> @Model.TrinhDo</label>
+
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label"><strong>Vị trí:</strong> @Model.ViTri</label>
+
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label"><strong>Mức lương mong muốn:</strong> @Model.MucLuongMongMuon</label>
+
+                            </div>
+
+
+
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="text-right mt-3">
+                    <button type="button" class="btn btn-primary">@Html.ActionLink("Cập nhật hồ sơ", "UpdateProfile", "SinhVien", new { id = (int)Session["UserID"] })</button>
+                    <button type="button" class="btn btn-default">@Html.ActionLink("Trở lại trang chủ", "Index", "Home")</button>
+                </div>
+
+
+
+
+            </div>
+
+

@@ -1,0 +1,103 @@
+﻿@model Gioithieuvieclam.Models.SinhVien
+@{
+    ViewBag.Title = "UpdateProfile";
+}
+<style>
+    /* Form style */
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    label {
+        font-weight: bold;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+
+    .text-danger {
+        color: #dc3545;
+    }
+
+    /* Button style */
+    .btn-primary {
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+    /* Link style */
+    a {
+        color: #007bff;
+        text-decoration: none;
+    }
+
+        a:hover {
+            text-decoration: underline;
+        }
+</style>
+<h2>Cập nhật hồ sơ</h2>
+
+@using (Html.BeginForm("UpdateProfile", "SinhVien", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.HoTen)
+        @Html.TextBoxFor(model => model.HoTen, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.HoTen, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.SoDienThoai)
+        @Html.TextBoxFor(model => model.SoDienThoai, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.SoDienThoai, "", new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.SoCCCD)
+        @Html.TextBoxFor(model => model.SoCCCD, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.SoCCCD, "", new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.DiaChi)
+        @Html.TextBoxFor(model => model.DiaChi, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.TrinhDo)
+        @Html.TextBoxFor(model => model.TrinhDo, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.TrinhDo, "", new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.ViTri)
+        @Html.TextBoxFor(model => model.ViTri, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.ViTri, "", new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.MucLuongMongMuon)
+        @Html.TextBoxFor(model => model.MucLuongMongMuon, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.MucLuongMongMuon, "", new { @class = "text-danger" })
+    </div>
+
+    <!-- Thêm các trường thông tin khác -->
+
+    <button type="submit" class="btn btn-primary">Lưu thay đổi</button>
+}
+
+@Html.ActionLink("Quay lại", "Index", "SinhVien", new { id = Model.UserID })
+

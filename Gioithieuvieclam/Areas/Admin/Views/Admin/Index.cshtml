@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Gioithieuvieclam.Models.CongViec>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Danh sách các bài đăng</h2>
+
+<p>
+    @Html.ActionLink("Thêm bài đăng mới", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NhaTuyenDungID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MoTaCongViec)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.YeuCau)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ViTri)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MucLuong)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ThongTinLienHe)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NhaTuyenDungID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MoTaCongViec)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.YeuCau)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ViTri)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MucLuong)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ThongTinLienHe)
+        </td>
+        <td>
+            @Html.ActionLink("Chỉnh sửa", "Edit", new { id=item.ID }) |
+            
+            @Html.ActionLink("Xóa", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

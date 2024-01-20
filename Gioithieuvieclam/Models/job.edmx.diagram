@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d5f35409fba44d7898d05dce1a18e236" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="jobModel.CongViec" Width="1.5" PointX="7.5" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobModel.HoSoUngTuyen" Width="1.5" PointX="7.5" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobModel.NguoiDung" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobModel.NhaTuyenDung" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobModel.PhanQuyen" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobModel.SinhVien" Width="1.5" PointX="5.25" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobModel.sysdiagram" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobModel.UngVien" Width="1.5" PointX="9.75" PointY="3.375" IsExpanded="true" />
+        <AssociationConnector Association="jobModel.FK__CongViec__NhaTuy__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="jobModel.FK__UngVien__CongVie__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="jobModel.FK__HoSoUngTu__SinhV__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="jobModel.FK_UngVien_HoSoUngTuyen" ManuallyRouted="false" />
+        <AssociationConnector Association="jobModel.FK__NguoiDung__RoleI__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="jobModel.FK__NhaTuyenD__UserI__4AB81AF0" ManuallyRouted="false" />
+        <AssociationConnector Association="jobModel.FK__SinhVien__UserID__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="jobModel.FK__UngVien__SinhVie__52593CB8" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
